@@ -15,7 +15,7 @@ public class LoginController {
   private String secret;
 
   @CrossOrigin(origins = "*")
-  @RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+  @PostMapping(value = "/login", produces = "application/json", consumes = "application/json")
   LoginResponse login(@RequestBody LoginRequest input) {
     User user = User.fetch(input.username);
     if (Postgres.md5(input.password).equals(user.hashedPassword)) {
